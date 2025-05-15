@@ -21,3 +21,8 @@ where -> mysqli_num_rows(param)
 # session_id()
 
 always change every new req
+
+# Notice
+
+all files pic in the asset if you want to add a product
+make sure to add a new pic if oyu want to have new product
