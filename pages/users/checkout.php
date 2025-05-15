@@ -4,25 +4,15 @@ session_start();
 require_once("../../db/customer.db.php");
 require_once("../../static/users/home-header.php");
 
-// Initialize empty cart if not exists
-if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart'])) {
-  $_SESSION['cart'] = [];
-}
-
-// Process form submission
-if (isset($_POST['place_order'])) {
-  // Order processing would go here
-  $_SESSION['order_success'] = true;
-  header("Location: order-confirmation.php");
-  exit();
-}
-
+// Process logout only if explicitly requested
 if (isset($_POST["logout"])) {
   session_destroy();
+  session_start();
   header("Location: //shoe-apparel.org/log/user/login.user.php");
   exit();
 }
 
+// Default values
 $subtotal = 0;
 $shipping = 0;
 $tax = 0;
@@ -51,8 +41,14 @@ ob_end_flush();
       <div class="lg:w-2/3">
         <h1 class="text-2xl font-semibold mb-6">Checkout</h1>
         <form method="post" action="">
+          <!-- Hidden field to pass cart data from localStorage to server -->
+          <input type="hidden" name="cart_data" id="cart_data" value="">
 
-          <!-- Shipping Section -->
+          <?php if (isset($orderError)): ?>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+              <?php echo $orderError; ?>
+            </div>
+          <?php endif; ?>
 
           <!-- Payment Method Section -->
           <div class="mb-8">
@@ -81,7 +77,7 @@ ob_end_flush();
             </div>
           </div>
 
-          <button type="submit" name="place_order"
+          <button type="submit" name="place_order" id="place_order_btn"
             class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-6 rounded-md transition">
             Place Order
           </button>
@@ -93,38 +89,30 @@ ob_end_flush();
         <div class="bg-gray-100 rounded-lg p-6">
           <h2 class="text-xs uppercase tracking-wide font-semibold text-gray-500 mb-4">Cart Summary</h2>
 
-          <?php if (empty($_SESSION['cart'])): ?>
+          <div id="checkout-cart-items">
+            <!-- Cart items will be loaded here dynamically -->
             <div class="text-center py-6 text-gray-500">
-              <p>Your cart is empty</p>
+              <p>Loading cart items...</p>
             </div>
-          <?php else: ?>
-            <?php foreach ($_SESSION['cart'] as $item): ?>
-              <div class="py-4 border-b border-gray-200 last:border-0">
-                <div class="flex justify-between">
-                  <span><?= $item['quantity'] ?> x <?= $item['name'] ?></span>
-                  <span>₱<?= number_format($item['price'], 2) ?></span>
-                </div>
-              </div>
-            <?php endforeach; ?>
-          <?php endif; ?>
+          </div>
 
           <div class="mt-6">
             <div class="flex justify-between mb-2">
               <span>Subtotal</span>
-              <span>₱0.00</span>
+              <span id="checkout-subtotal">₱0.00</span>
             </div>
             <div class="flex justify-between mb-2">
               <span>Shipping & handling</span>
-              <span>₱0.00</span>
+              <span id="checkout-shipping">₱0.00</span>
             </div>
             <div class="flex justify-between mb-2">
-              <span>Tax</span>
-              <span>₱0.00</span>
+              <span>VAT rate</span>
+              <span id="checkout-tax">₱0.00</span>
             </div>
 
             <div class="flex justify-between pt-4 border-t border-gray-200 text-lg font-semibold">
               <span>Total</span>
-              <span>₱0.00</span>
+              <span id="checkout-total">₱0.00</span>
             </div>
           </div>
         </div>
@@ -171,6 +159,94 @@ ob_end_flush();
       .closest('.payment-option').classList.remove('border-gray-300');
     document.querySelector('input[name="payment_method"]:checked')
       .closest('.payment-option').classList.add('border-red-500', 'bg-red-50');
+
+    // Load cart data from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      // Debug: Check if localStorage is working
+      try {
+        localStorage.setItem('test', 'test');
+        localStorage.removeItem('test');
+        console.log('localStorage is working');
+      } catch (e) {
+        console.error('localStorage is not available:', e);
+      }
+
+      // Get cart from localStorage
+      let cart = [];
+      try {
+        const cartData = localStorage.getItem('soleStyleCart');
+        console.log('Raw cart data:', cartData);
+
+        if (cartData) {
+          cart = JSON.parse(cartData);
+          console.log('Parsed cart:', cart);
+        } else {
+          console.log('No cart in localStorage');
+        }
+      } catch (e) {
+        console.error('Error parsing cart:', e);
+      }
+
+      const cartItemsContainer = document.getElementById('checkout-cart-items');
+      const cartDataInput = document.getElementById('cart_data');
+      const placeOrderBtn = document.getElementById('place_order_btn');
+
+      // Set cart data to hidden input for form submission
+      cartDataInput.value = JSON.stringify(cart);
+
+      // Clear loading message
+      cartItemsContainer.innerHTML = '';
+
+      if (!cart || cart.length === 0) {
+        // Display empty cart message
+        cartItemsContainer.innerHTML = `
+          <div class="text-center py-6 text-gray-500">
+            <p>Your cart is empty</p>
+          </div>
+        `;
+
+        // Disable the place order button if cart is empty
+        if (placeOrderBtn) {
+          placeOrderBtn.disabled = true;
+          placeOrderBtn.classList.add('opacity-50', 'cursor-not-allowed');
+          placeOrderBtn.classList.remove('hover:bg-red-700');
+        }
+      } else {
+        // Calculate values
+        let subtotal = 0;
+
+        // Add each item to the cart summary
+        cart.forEach(item => {
+          const itemTotal = item.price * item.quantity;
+          subtotal += itemTotal;
+
+          const itemElement = document.createElement('div');
+          itemElement.className = 'py-4 border-b border-gray-200 last:border-0';
+          itemElement.innerHTML = `
+            <div class="flex justify-between">
+              <span>${item.quantity} x ${item.name}</span>
+              <span>₱${itemTotal.toFixed(2)}</span>
+            </div>
+            <div class="text-sm text-gray-500">
+              ${item.size || 'N/A'} | ${item.color || 'N/A'}
+            </div>
+          `;
+
+          cartItemsContainer.appendChild(itemElement);
+        });
+
+        // Calculate other values
+        const shipping = subtotal > 1000 ? 0 : 100; // Free shipping for orders over ₱1000
+        const tax = subtotal * 0.12; // 12% tax
+        const total = subtotal + shipping + tax;
+
+        // Update summary values
+        document.getElementById('checkout-subtotal').textContent = `₱${subtotal.toFixed(2)}`;
+        document.getElementById('checkout-shipping').textContent = shipping === 0 ? 'Free' : `₱${shipping.toFixed(2)}`;
+        document.getElementById('checkout-tax').textContent = `₱${tax.toFixed(2)}`;
+        document.getElementById('checkout-total').textContent = `₱${total.toFixed(2)}`;
+      }
+    });
   </script>
 </body>
 

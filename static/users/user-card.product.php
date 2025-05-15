@@ -91,4 +91,6 @@
   </div>
 </div>
 
+<!-- Make sure both JS files are included -->
 <script src="../../frontend/js/cart.components.js"></script>
+<script src="../../frontend/js/cart.added.js"></script>

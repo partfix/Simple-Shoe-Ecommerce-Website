@@ -74,7 +74,9 @@ ob_end_flush();
   </footer>
 
   <script src="/frontend/js/index.js"></script>
-  <script src="../../frontend/js/cart.components.js" defer></script>
+  <script src="../../frontend/js/cart.components.js"></script>
+  <script src="../../frontend/js/cart.added.js"></script>
 </body>
+
 
 </html>

@@ -1,120 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Debug logging
-  console.log('DOM fully loaded');
-
-  // Elements
-  const cartButton = document.getElementById('cart-button');
-  const cartSidebar = document.getElementById('cart-sidebar');
-  const cartOverlay = document.getElementById('cart-overlay');
-  const closeCartButton = document.getElementById('close-cart');
-  const continueShoppingButton = document.getElementById('continue-shopping');
-
-  const likesButton = document.getElementById('likes-button');
-  const likesSidebar = document.getElementById('likes-sidebar');
-  const likesOverlay = document.getElementById('likes-overlay');
-  const closeLikesButton = document.getElementById('close-likes');
-  const continueShoppingLikesButton = document.getElementById('continue-shopping-likes');
-
-  // Cart 
-  if (cartButton) {
-    cartButton.addEventListener('click', function (e) {
-      e.preventDefault();
-      openCart();
-    });
-  }
-
-  function openCart() {
-    // Prepare for animation
-    cartOverlay.classList.remove('hidden');
-    cartOverlay.style.opacity = '0';
-    document.body.style.overflow = 'hidden'; // stop scrolling
-
-    // Performance ni
-    requestAnimationFrame(() => {
-      cartOverlay.style.opacity = '1';
-      cartSidebar.style.transform = 'translateX(0)';
-    });
-
-    // Update cart UI when opening the cart
-    updateCartUI();
-  }
-
-  function closeCart() {
-    // smoooth ugh close
-    cartOverlay.style.opacity = '0';
-    cartSidebar.style.transform = 'translateX(100%)';
-
-    // After animation completes, hide overlay
-    setTimeout(() => {
-      cartOverlay.classList.add('hidden');
-      document.body.style.overflow = ''; // Enable scrolling
-    }, 300); // Match transition duration
-  }
-
-  if (closeCartButton) closeCartButton.addEventListener('click', closeCart);
-  if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
-  if (continueShoppingButton) continueShoppingButton.addEventListener('click', closeCart);
-
-  // Likes func
-  if (likesButton) {
-    likesButton.addEventListener('click', function (e) {
-      console.log('Likes button clicked');
-      e.preventDefault();
-      openLikes();
-    });
-  }
-
-  function openLikes() {
-    console.log('Opening likes sidebar');
-    // Prepare for animation
-    likesOverlay.classList.remove('hidden');
-    likesOverlay.style.opacity = '0';
-    document.body.style.overflow = 'hidden'; // stop scrolling mf
-
-    // Perform smooth animation
-    requestAnimationFrame(() => {
-      likesOverlay.style.opacity = '1';
-      likesSidebar.style.transform = 'translateX(0)';
-    });
-  }
-
-  function closeLikes() {
-    // Smooth close
-    likesOverlay.style.opacity = '0';
-    likesSidebar.style.transform = 'translateX(100%)';
-
-    // After animation completes
-    setTimeout(() => {
-      likesOverlay.classList.add('hidden');
-      document.body.style.overflow = ''; // Enable scrolling
-    }, 300);
-  }
-
-  if (closeLikesButton) closeLikesButton.addEventListener('click', closeLikes);
-  if (likesOverlay) likesOverlay.addEventListener('click', closeLikes);
-  if (continueShoppingLikesButton) continueShoppingLikesButton.addEventListener('click', closeLikes);
-
-  // Add All To Cart 
-  const addAllToCartButton = document.getElementById('add-all-to-cart');
-  if (addAllToCartButton) {
-    addAllToCartButton.addEventListener('click', function () {
-      // Implement your add all to cart functionality here
-      console.log('Adding all liked items to cart');
-      closeLikes();
-      // Wait for likes 
-      setTimeout(() => {
-        openCart();
-      }, 300);
-    });
-  }
-
-  // Make sure the Cart UI is initialized on page load
-  updateCartUI();
-});
-
-// Expose these functions to the global scope so they can be called from HTML
-window.openCart = openCart;
-window.closeCart = closeCart;
+// This file extends cart.components.js with the addToCart functionality
 
 /**
  * Add item to cart function
@@ -133,6 +17,7 @@ function addToCart(productId) {
   } else {
     // Fetch product info from the page
     // Get the parent element of the clicked button to extract product details
+    // This is a direct DOM approach but for production an API call would be better
     const productElement = event.target.closest('.bg-white');
 
     if (productElement) {
@@ -185,17 +70,17 @@ function showCartNotification() {
   // Set notification content
   notification.textContent = 'Item added to cart!';
 
-  // Animate notification in
+  // Animate notification
   setTimeout(() => notification.classList.remove('translate-x-full'), 100);
 
-  // Hide and remove notification after delay
+  // Hide notification after delay
   setTimeout(() => {
     notification.classList.add('translate-x-full');
     setTimeout(() => {
       if (notification.parentNode) {
         notification.parentNode.removeChild(notification);
       }
-    }, 300); // Wait for transition to finish
+    }, 300); // Wait for transition to finish before removing
   }, 3000);
 }
 
@@ -339,3 +224,15 @@ function updateCartBadge() {
     }
   }
 }
+
+// Initialize cart UI when page loads
+document.addEventListener('DOMContentLoaded', function () {
+  // Update cart UI on page load
+  updateCartUI();
+
+  // Make sure the cart button has the correct position style
+  const cartButton = document.getElementById('cart-button');
+  if (cartButton && !cartButton.classList.contains('relative')) {
+    cartButton.classList.add('relative');
+  }
+});

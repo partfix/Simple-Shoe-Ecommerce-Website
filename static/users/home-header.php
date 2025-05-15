@@ -74,14 +74,10 @@
           </div>
         </div>
 
-        <!-- Favorites/Likes Button -->
-        <a href="#" id="likes-button" class="text-gray-600 hover:text-gray-900 relative flex items-center gap-1 transition-transform duration-200 hover:scale-110">
-          <img src="/asset/favorite.png" alt="Favorite Icon" class="w-6 h-6">
-        </a>
-
-        <!-- Cart Button -->
+        <!-- Cart Button with relative positioning for badge -->
         <a href="#" id="cart-button" class="text-gray-600 hover:text-gray-900 relative flex items-center gap-1 transition-transform duration-200 hover:scale-110">
           <img src="/asset/add-to-basket.png" alt="Cart Icon" class="w-6 h-6">
+          <!-- Cart Badge will be added dynamically by JS -->
         </a>
       </div>
     </div>
@@ -124,7 +120,7 @@
     <div class="border-t p-4 bg-gray-50">
       <div class="flex justify-between mb-2">
         <span class="font-medium text-gray-600">Subtotal:</span>
-        <span class="font-bold text-gray-800" id="cart-subtotal">$0.00</span>
+        <span class="font-bold text-gray-800" id="cart-subtotal">₱0.00</span>
       </div>
       <div class="flex justify-between mb-4">
         <span class="font-medium text-gray-600">Shipping:</span>
@@ -139,55 +135,10 @@
     </div>
   </div>
 
-  <!-- Likes Sidebar Overlay -->
-  <div id="likes-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300"></div>
-
-  <!-- Likes Sidebar -->
-  <div id="likes-sidebar" class="fixed top-0 right-0 h-screen w-80 md:w-96 bg-white shadow-lg z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
-    <!-- Likes Header -->
-    <div class="p-4 border-b flex justify-between items-center bg-gray-50">
-      <h2 class="text-xl font-semibold text-gray-800">Your Favorites</h2>
-      <button id="close-likes" class="text-gray-500 hover:text-red-500 p-1 rounded-full hover:bg-gray-100 transition-all duration-200">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Likes Items Container -->
-    <div class="flex-grow overflow-y-auto p-4">
-      <!-- Liked items will be dynamically added here -->
-
-
-      <div id="likes-items-container" class="space-y-4">
-        <!-- Empty likes state -->
-
-
-        <div id="empty-likes" class="py-8 text-center">
-          <svg class="w-16 h-16 mx-auto text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-          </svg>
-          <p class="mt-4 text-gray-500">You haven't liked any items yet</p>
-          <a href="/pages/shop/inside-cart.php" class="mt-4 text-red-500 hover:text-red-600 font-medium transition-colors duration-200 hover:underline">
-            Explore Products
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Likes Footer  -->
-    <div class="border-t p-4 bg-gray-50">
-      <button id="add-all-to-cart" class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-md font-medium transition-all duration-300 flex items-center justify-center hover:shadow-md transform hover:-translate-y-1">
-        Add All to Cart
-      </button>
-      <a href="/pages/shop/inside-cart.php" id="continue-shopping-likes" class="w-full mt-3 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 py-2 rounded-md font-medium transition-all duration-300 flex items-center justify-center">
-        Continue Shopping
-      </a>
-    </div>
-  </div>
+  <!-- Custom Cart Notification (will be created by JS when needed) -->
 
   <script src="../../frontend/js/cart.components.js" defer></script>
-  <script src="../../frontend/js/index.js" defer></script>
+  <script src="../../frontend/js/cart.added.js"></script>
 </body>
 
 </html>
