@@ -1,0 +1,13 @@
+.notification {
+	transition: all 0.3s ease-in-out;
+	transform: translateX(120%);
+}
+
+.notification.show {
+	transform: translateX(0);
+}
+
+input:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.5);
+}
