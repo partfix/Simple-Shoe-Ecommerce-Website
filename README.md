@@ -1,6 +1,6 @@
 # SoleStyle
 
-This a simple ecommerce website that performs basic emcommerce.
+This a simple shoe ecommerce .
 
 ![alt text](md/image.png)
 ![alt text](md/image-2.png)
@@ -25,7 +25,7 @@ This a simple ecommerce website that performs basic emcommerce.
 - **Admin Settings**  
   ![Admin Settings](md/image-9.png)
 
-# Contact Me
+# Contact Me For User Part
 
 project lead and developer - johnclarencepalma7@gmail.com
 Linkedin - https://www.linkedin.com/in/rencee/
