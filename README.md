@@ -7,7 +7,7 @@ This a simple ecommerce website that performs basic emcommerce.
 ![alt text](md/image-10.png)
 
 - **Admin Dashboard**  
-  ![Admin Dashboard](md/image-3.png)
+  ![Admin Dashboard](md/image-11.png)
 
 - **Admin Order Section**  
   ![Admin Order Section](md/image-4.png)

@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div class="h-48 mb-5 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 hover:scrollbar-thumb-indigo-200 scrollbar-track-transparent">
+  <div class="h-50 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-200 hover:scrollbar-thumb-indigo-200 scrollbar-track-transparent">
     <div class="p-5 flex items-center space-x-4">
       <div class="flex-shrink-0">
         <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center drop-shadow-md">
@@ -24,70 +24,6 @@
       </div>
       <div class="flex-shrink-0">
         <a href="https://web.facebook.com/profile.php?id=100008272907321" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Contact
-        </a>
-      </div>
-    </div>
-    <div class="p-5 flex items-center space-x-4">
-      <div class="flex-shrink-0">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex-1">
-        <h3 class="font-medium text-red-900">Database Admin</h3>
-        <div class="text-sm text-gray-500">
-          <a href="https://www.facebook.com/Andriango11" class="text-indigo-600 hover:underline">Facebook Profile</a>
-        </div>
-        <div class="text-sm text-gray-500">Philippines +63</div>
-      </div>
-      <div class="flex-shrink-0">
-        <a href="https://www.facebook.com/messages/e2ee/t/10058810447519872" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Contact
-        </a>
-      </div>
-    </div>
-    <div class="p-5 flex items-center space-x-4">
-      <div class="flex-shrink-0">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex-1 ">
-        <h3 class="font-medium text-red-900">UI Designer</h3>
-        <div class="text-sm text-gray-500">
-          <a href="https://www.facebook.com/pearl.monceda.3" class="text-indigo-600 hover:underline">Facebook Profile</a>
-        </div>
-        <div class="text-sm text-gray-500">Philippines +63</div>
-      </div>
-      <div class="flex-shrink-0">
-        <a href="https://web.facebook.com/profile.php?id=100008272907321" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Contact
-        </a>
-      </div>
-    </div>
-
-    <div class="p-5 flex items-center space-x-4">
-      <div class="flex-shrink-0">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-        </div>
-      </div>
-      <div class="flex-1">
-        <h3 class="font-medium text-red-900">UX Designer</h3>
-        <div class="text-sm text-gray-500">
-          <a href="https://www.facebook.com/patjet187" class="text-indigo-600 hover:underline">Facebook Profile</a>
-        </div>
-        <div class="text-sm text-gray-500">Philippines +63</div>
-      </div>
-      <div class="flex-shrink-0">
-        <a href="https://www.facebook.com/patjet187" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           Contact
         </a>
       </div>
