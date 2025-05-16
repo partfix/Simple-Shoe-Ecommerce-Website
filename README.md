@@ -1,6 +1,6 @@
 # SoleStyle
 
-This a simple ecommerce website that performs basic emcommerce.
+This a simple shoe ecommerce .
 
 ![alt text](md/image.png)
 ![alt text](md/image-2.png)
@@ -25,12 +25,8 @@ This a simple ecommerce website that performs basic emcommerce.
 - **Admin Settings**  
   ![Admin Settings](md/image-9.png)
 
-# Contact Me
-
-project lead and developer - johnclarencepalma7@gmail.com
-Linkedin - https://www.linkedin.com/in/rencee/
+# Contact Me For DB schema
+Project Lead and Developer: johnclarencepalma7@gmail.com | LinkedIn: https://www.linkedin.com/in/rencee/
 
 # Notice
-
-all files pic in the asset if you want to add a product
-make sure to add a new pic if you want to have new product
+All picture files are in the asset folder. If you want to add a product, make sure to add a new picture for that new product.
