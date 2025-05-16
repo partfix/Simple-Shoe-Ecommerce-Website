@@ -1,10 +1,11 @@
 # SoleStyle
 
 This a simple shoe ecommerce .
+![image](https://github.com/user-attachments/assets/66c31444-d1de-47c4-a2dd-299461353a66)
+![Screenshot 2025-05-16 104453](https://github.com/user-attachments/assets/0bbc135a-cacc-420e-bacb-117ea7e6ca4d)
+![Screenshot 2025-05-16 104435](https://github.com/user-attachments/assets/dde9eaa1-e086-4764-832c-e056224bcf85)
 
-![alt text](md/image.png)
-![alt text](md/image-2.png)
-![alt text](md/image-10.png)
+
 
 - **Admin Dashboard**  
   ![image](https://github.com/user-attachments/assets/eb492d57-0137-4a02-ad58-0e0048e31ac7)
