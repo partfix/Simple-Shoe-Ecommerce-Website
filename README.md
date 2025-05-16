@@ -7,7 +7,8 @@ This a simple shoe ecommerce .
 ![alt text](md/image-10.png)
 
 - **Admin Dashboard**  
-   ![Admin Dashboard](md/image-11.png)
+  ![image](https://github.com/user-attachments/assets/eb492d57-0137-4a02-ad58-0e0048e31ac7)
+
 
 - **Admin Order Section**  
   ![Admin Order Section](md/image-4.png)
