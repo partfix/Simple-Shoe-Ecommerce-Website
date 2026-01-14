@@ -29,7 +29,7 @@ This a simple shoe ecommerce .
 ![Screenshot 2025-05-16 104757](https://github.com/user-attachments/assets/0d3bcfa3-02e6-4901-9dfd-60f454c33e78)
 
 
-# Contact Me For DB schema
+# Got a question? 
 
 Project Lead and Developer: johnclarencepalma7@gmail.com | LinkedIn: https://www.linkedin.com/in/rencee/
 
